@@ -37,7 +37,8 @@
 ;; set tab width 4 for c-basic
 (setq-default c-basic-offset 4
 	      c-default-style "linux")
-(setq-default tab-width 4)
+(setq-default tab-width 4
+	      indent-tabs-mode nil)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
