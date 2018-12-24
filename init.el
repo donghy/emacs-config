@@ -8,7 +8,7 @@
   (package-refresh-contents))
 
 (defvar my-packages
-  '(flycheck evil key-chord)
+  '(flycheck seq company)
   "These are my packages.")
 
 (dolist (p my-packages)
@@ -20,28 +20,25 @@
   (when (not (package-installed-p 'exec-path-from-shell))
     (package-install 'exec-path-from-shell))))
 
-(require 'key-chord)
-(require 'evil)
 (require 'flycheck)
 
-(setq key-chord-two-keys-delay 0.1)
-(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-(key-chord-mode t)
-(evil-mode 0)
 (global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
 ;; show line number
 (global-linum-mode 1)
 
+;; set cursor-type
+(setq-default cursor-type 'bar)
+
 ;; close welcome windows
 (setq inhibit-splash-screen 1)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (flycheck key-chord evil))))
+
+;; set tab width 4 for c-basic
+(setq-default c-basic-offset 4
+	      c-default-style "linux")
+(setq-default tab-width 4)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
