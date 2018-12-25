@@ -8,7 +8,7 @@
   (package-refresh-contents))
 
 (defvar my-packages
-  '(flycheck seq company)
+  '(flycheck seq company evil key-chord)
   "These are my packages.")
 
 (dolist (p my-packages)
@@ -21,6 +21,13 @@
     (package-install 'exec-path-from-shell))))
 
 (require 'flycheck)
+(require 'evil)
+(require 'key-chord)
+
+(setq key-chord-two-keys-delay 0.1)
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+(key-chord-mode t)
+(evil-mode t)
 
 (global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
@@ -40,9 +47,5 @@
 (setq-default tab-width 4
 	      indent-tabs-mode nil)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; enable bracket complete
+(electric-pair-mode t)
